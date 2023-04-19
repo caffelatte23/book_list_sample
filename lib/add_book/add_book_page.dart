@@ -1,5 +1,4 @@
 import 'package:book_list_sample/add_book/add_book_model.dart';
-import 'package:book_list_sample/domain/book.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -47,8 +46,9 @@ class AddBookPage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () async {
                       try {
-                        await model.addBook();
-                        Navigator.of(context).pop(true);
+                        await model
+                            .addBook()
+                            .then((value) => Navigator.of(context).pop(true));
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
